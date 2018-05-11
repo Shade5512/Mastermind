@@ -1,11 +1,49 @@
 <html>
-<head><title>Mastermind</title></head>
-<body>
+<head>
+<title>Mastermind</title>
+<style>
+.c {
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+</style>
+<script>
+function play() {
+	window.sessionStorage.pegs = document.Play.pegs.value;
+	window.sessionStorage.colors = document.Play.colors.value;
+}
+function solve() {
+	window.sessionStorage.pegs = document.Solve.pegs.value;
+	window.sessionStorage.colors = document.Play.colors.value;
+}
+function loadvalues() {
+	document.Play.pegs.value = window.sessionStorage.pegs;
+	document.Solve.pegs.value = window.sessionStorage.pegs;
+	document.Play.colors.value = window.sessionStorage.colors;
+	document.Solve.colors.value = window.sessionStorage.colors;
+}
+</script>
+</head>
+<body onload=loadvalues()>
+<div class="c">
 	<form name="Play">
+	<fieldset>
 	<legend>Play</legend>
+	Pegs: <input type="number" name="pegs" value=0><br>
+	Colors: <input type="number" name="colors" value=0><br>
+	<input type="button" onclick=play() value="Go"></input>
+	</fieldset>
 	</form>
 	<form name="Solve">
+	<fieldset>
 	<legend>Solve</legend>
+	Pegs: <input type="number" name="pegs" value=0><br>
+	Colors: <input type="number" name="colors" value=0><br>
+	Clues: <input type=""><br>
+	<input type="button" onclick=solve() value="Go"></input>
+	</fieldset>
 	</form>
+</div>
 </body>
 </html>
